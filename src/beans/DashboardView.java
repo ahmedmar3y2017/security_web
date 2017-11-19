@@ -30,26 +30,36 @@ public class DashboardView implements Serializable {
 		DashboardColumn column4 = new DefaultDashboardColumn();
 		DashboardColumn column5 = new DefaultDashboardColumn();
 		DashboardColumn column6 = new DefaultDashboardColumn();
+		DashboardColumn column7 = new DefaultDashboardColumn();
+		DashboardColumn column8 = new DefaultDashboardColumn();
+		DashboardColumn column9 = new DefaultDashboardColumn();
 
+		// classical methods
 		column1.addWidget("ceaser");
 		column1.addWidget("transposition");
-
 		column2.addWidget("ploy");
 		column3.addWidget("play");
-
 		column3.addWidget("affine");
 		column2.addWidget("combination");
-
 		column4.addWidget("hillcypher");
 		column4.addWidget("full");
 		column5.addWidget("onetime");
 		column6.addWidget("cylinder");
+		column7.addWidget("diffhelman");
+
+		// modern
+		column8.addWidget("rsa");
+		column9.addWidget("des");
+		
 		model.addColumn(column1);
 		model.addColumn(column2);
 		model.addColumn(column3);
 		model.addColumn(column4);
 		model.addColumn(column5);
 		model.addColumn(column6);
+		model.addColumn(column7);
+		model.addColumn(column8);
+		model.addColumn(column9);
 
 	}
 
