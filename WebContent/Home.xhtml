@@ -226,28 +226,164 @@
 		</p:layout>
 		<!-- 		********************** ceaser *************** -->
 		<!-- 		enc -->
-		<p:dialog header="Effects" widgetVar="ceaser_enc" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="ceaser_enc" />
+		<p:dialog header="ceaser encrypt" widgetVar="ceaser_enc"
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+			<h:form>
+				<p:growl id="cgrow" showDetail="true" />
+				<p:panel id="cpanel" header="Test Ceaser">
+
+					<p:messages id="cmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="ckey" value="Key:" />
+						<p:inputText id="ckey" value="#{ceaserBean.key}" required="true"
+							requiredMessage="Key is Required" label="ckey">
+							<p:ajax update="ckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="ckey" id="ckeymessage" display="icon" />
+
+						<p:outputLabel for="cplain" value="plain:" />
+						<p:inputText id="cplain" value="#{ceaserBean.plain}"
+							label="cplain" required="true"
+							requiredMessage="Plain is Required">
+							<p:ajax update="cplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="cplain" id="cplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="cpanel cgrow"
+						actionListener="#{ceaserBean.test()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
 		</p:dialog>
 		<!-- 		dec -->
-		<p:dialog header="Effects" widgetVar="ceaser_dec" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="ceaser_dec" />
+		<p:dialog header="Ceaser Decrypt" widgetVar="ceaser_dec"
+			showEffect="explode" hideEffect="bounce" modal="true" closable="true"
+			height="300px" width="550px">
+
+			<h:form>
+				<p:growl id="cdecgrow" showDetail="true" />
+				<p:panel id="cdecpanel" header="Test Ceaser">
+
+					<p:messages id="cdecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="cdeckey" value="Key:" />
+						<p:inputText id="cdeckey" value="#{ceaserBean.key}"
+							required="true" requiredMessage="Key is Required" label="cdeckey">
+							<p:ajax update="cdeckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="cdeckey" id="cdeckeymessage" display="icon" />
+
+						<p:outputLabel for="cdecplain" value="Cypher:" />
+						<p:inputText id="cdecplain" value="#{ceaserBean.cypher}"
+							label="cdecplain" required="true"
+							requiredMessage="Cypher is Required">
+							<p:ajax update="cdecplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="cdecplain" id="cdecplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="cdecpanel cdecgrow"
+						actionListener="#{ceaserBean.test_dec()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
 		</p:dialog>
 
 		<!-- 		 ***********************transposition ************************ -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="transposition_enc"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
-			<h:outputText value="transposition_enc" />
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+
+
+			<h:form>
+				<p:growl id="tencgrow" showDetail="true" />
+				<p:panel id="tencpanel" header="Test Ceaser">
+
+					<p:messages id="tencmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="tenckey" value="Key:" />
+						<p:inputText id="tenckey" value="#{transpositionBean.key}"
+							required="true" requiredMessage="Key is Required" label="tenckey">
+							<p:ajax update="tenckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="tenckey" id="tenckeymessage" display="icon" />
+
+						<p:outputLabel for="tencplain" value="Plain:" />
+						<p:inputText id="tencplain" value="#{transpositionBean.plain}"
+							label="tencplain" required="true"
+							requiredMessage="Plain is Required">
+							<p:ajax update="tencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="tencplain" id="tencplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="tencpanel tencgrow"
+						actionListener="#{transpositionBean.test()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
+
+
+
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="transposition_dec"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
-			<h:outputText value="transposition_dec" />
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+
+
+
+			<h:form>
+				<p:growl id="tdecgrow" showDetail="true" />
+				<p:panel id="tdecpanel" header="Test Ceaser">
+
+					<p:messages id="tdecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="tdeckey" value="Key:" />
+						<p:inputText id="tdeckey" value="#{transpositionBean.key}"
+							required="true" requiredMessage="Key is Required" label="tenckey">
+							<p:ajax update="tdeckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="tdeckey" id="tdeckeymessage" display="icon" />
+
+						<p:outputLabel for="tdecplain" value="Cypher:" />
+						<p:inputText id="tdecplain" value="#{transpositionBean.cypher}"
+							label="tdecplain" required="true"
+							requiredMessage="Cypher is Required">
+							<p:ajax update="tdecplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="tdecplain" id="tdecplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="tdecpanel tdecgrow"
+						actionListener="#{transpositionBean.test_dec()}"
+						icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
+
+
+
 		</p:dialog>
 		<!-- 		******************* ploy************* -->
 		<!-- 		enc -->
@@ -380,15 +516,22 @@
 		</p:dialog>
 
 
-		<!--   ************************ menu that appear *************** -->
-		<p:stack icon="/assets/images/stack.png">
-			<p:menuitem value="Home" icon="/assets/images/home.png" url="#" />
-			<p:menuitem value="Music" icon="/assets/images/music.png" url="#" />
-			<p:menuitem value="Video" icon="/assets/images/video.png" url="#" />
-			<p:menuitem value="Email" icon="/assets/images/email.png" url="#" />
-			<p:menuitem value="Portfolio" icon="/assets/images/portfolio.png"
-				url="#" />
-		</p:stack>
+		<h:form>
+
+
+			<!--   ************************ menu that appear *************** -->
+			<p:stack icon="/assets/images/stack.png">
+				<p:menuitem value="Home" icon="/assets/images/home.png" url="#" />
+				<p:menuitem value="Section" onclick="PF('sec').show();"
+					icon="/assets/images/section.png" />
+				<p:menuitem value="Lectures" onclick="PF('lec').show();"
+					icon="/assets/images/lecture.png" />
+				<p:menuitem value="Exams" onclick="PF('exam').show();"
+					icon="/assets/images/exam.png" />
+				<p:menuitem value="Asci" onclick="PF('aski').show();"
+					icon="/assets/images/table.png" />
+			</p:stack>
+		</h:form>
 
 
 		<!-- ********************************* section ******************************* -->
@@ -413,6 +556,7 @@
 				<p:graphicImage library="images/exam" name="#{imageExam}"
 					styleClass="content" />
 				<div class="caption">#{imageExam}</div>
+
 			</p:contentFlow>
 
 
@@ -429,5 +573,14 @@
 	</h:body>
 
 </f:view>
+<script type="text/javascript">
+function start() {
+    PF('statusDialog').show();
+}
+ 
+function stop() {
+    PF('statusDialog').hide();
+}
+</script>
 </html>
 
