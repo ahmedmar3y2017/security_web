@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
-public class TranspositionBean {
+public class PolyBean {
 	public String key;
 	public String plain;
 	public String cypher;

@@ -247,7 +247,9 @@
 						<p:outputLabel for="cplain" value="plain:" />
 						<p:inputText id="cplain" value="#{ceaserBean.plain}"
 							label="cplain" required="true"
-							requiredMessage="Plain is Required">
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
 							<p:ajax update="cplainmessage" event="keyup" />
 						</p:inputText>
 						<p:message for="cplain" id="cplainmessage" display="icon" />
@@ -284,7 +286,9 @@
 						<p:outputLabel for="cdecplain" value="Cypher:" />
 						<p:inputText id="cdecplain" value="#{ceaserBean.cypher}"
 							label="cdecplain" required="true"
-							requiredMessage="Cypher is Required">
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
 							<p:ajax update="cdecplainmessage" event="keyup" />
 						</p:inputText>
 						<p:message for="cdecplain" id="cdecplainmessage" display="icon" />
@@ -308,23 +312,28 @@
 
 			<h:form>
 				<p:growl id="tencgrow" showDetail="true" />
-				<p:panel id="tencpanel" header="Test Ceaser">
+				<p:panel id="tencpanel" header="Test Transposition">
 
 					<p:messages id="tencmsgs" />
 
 					<h:panelGrid columns="3" cellpadding="5">
 						<p:outputLabel for="tenckey" value="Key:" />
 						<p:inputText id="tenckey" value="#{transpositionBean.key}"
-							required="true" requiredMessage="Key is Required" label="tenckey">
-							<p:ajax update="tenckeymessage" event="keyup" />
+							required="true" requiredMessage="Key is Required" label="tenckey"
+							validatorMessage="Key is String Only">
 
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+
+							<p:ajax update="tenckeymessage" event="keyup" />
 						</p:inputText>
 						<p:message for="tenckey" id="tenckeymessage" display="icon" />
 
 						<p:outputLabel for="tencplain" value="Plain:" />
 						<p:inputText id="tencplain" value="#{transpositionBean.plain}"
 							label="tencplain" required="true"
-							requiredMessage="Plain is Required">
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
 							<p:ajax update="tencplainmessage" event="keyup" />
 						</p:inputText>
 						<p:message for="tencplain" id="tencplainmessage" display="icon" />
@@ -332,7 +341,8 @@
 					</h:panelGrid>
 
 					<p:commandButton value="Test" update="tencpanel tencgrow"
-						actionListener="#{transpositionBean.test()}" icon="ui-icon-check" />
+						actionListener="#{transpositionBean.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
 				</p:panel>
 			</h:form>
 
@@ -351,14 +361,16 @@
 
 			<h:form>
 				<p:growl id="tdecgrow" showDetail="true" />
-				<p:panel id="tdecpanel" header="Test Ceaser">
+				<p:panel id="tdecpanel" header="Test Transposition">
 
 					<p:messages id="tdecmsgs" />
 
 					<h:panelGrid columns="3" cellpadding="5">
 						<p:outputLabel for="tdeckey" value="Key:" />
 						<p:inputText id="tdeckey" value="#{transpositionBean.key}"
-							required="true" requiredMessage="Key is Required" label="tenckey">
+							required="true" requiredMessage="Key is Required" label="tenckey"
+							validatorMessage="Key is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
 							<p:ajax update="tdeckeymessage" event="keyup" />
 
 						</p:inputText>
@@ -367,7 +379,9 @@
 						<p:outputLabel for="tdecplain" value="Cypher:" />
 						<p:inputText id="tdecplain" value="#{transpositionBean.cypher}"
 							label="tdecplain" required="true"
-							requiredMessage="Cypher is Required">
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
 							<p:ajax update="tdecplainmessage" event="keyup" />
 						</p:inputText>
 						<p:message for="tdecplain" id="tdecplainmessage" display="icon" />
@@ -388,105 +402,491 @@
 		<!-- 		******************* ploy************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="poly_enc" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="poly_enc" />
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
+
+			<h:form>
+				<p:growl id="poencgrow" showDetail="true" />
+				<p:panel id="poencpanel" header="Test Polyalphapitic substitution">
+
+					<p:messages id="poencmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="poenckey" value="Key:" />
+						<p:inputText id="poenckey" value="#{polyBean.key}" required="true"
+							requiredMessage="Key is Required" label="poenckey"
+							validatorMessage="Key is String Only">
+
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+
+							<p:ajax update="poenckeymessage" event="keyup" />
+						</p:inputText>
+						<p:message for="poenckey" id="poenckeymessage" display="icon" />
+
+						<p:outputLabel for="poencplain" value="Plain:" />
+						<p:inputText id="poencplain" value="#{polyBean.plain}"
+							label="poencplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="poencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="poencplain" id="poencplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="poencpanel poencgrow"
+						actionListener="#{polyBean.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
+
+
+
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="poly_dec" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="poly_dec" />
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
+
+
+
+
+
+			<h:form>
+				<p:growl id="podecgrow" showDetail="true" />
+				<p:panel id="podecpanel" header="Test Polyalphapitic substitution">
+
+					<p:messages id="podecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="podeckey" value="Key:" />
+						<p:inputText id="podeckey" value="#{polyBean.key}" required="true"
+							requiredMessage="Key is Required" label="poenckey"
+							validatorMessage="Key is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="podeckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="podeckey" id="podeckeymessage" display="icon" />
+
+						<p:outputLabel for="podecplain" value="Cypher:" />
+						<p:inputText id="podecplain" value="#{polyBean.cypher}"
+							label="podecplain" required="true"
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="podecplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="podecplain" id="podecplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="podecpanel podecgrow"
+						actionListener="#{polyBean.test_dec()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
+
+
+
+
 		</p:dialog>
 		<!--  *************************** play ******************** -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="play_enc" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="play_enc" />
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
+
+			<h:form>
+				<p:growl id="plencgrow" showDetail="true" />
+				<p:panel id="plencpanel" header="Test PlayFair">
+
+					<p:messages id="plencmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="plenckey" value="Key:" />
+						<p:inputText id="plenckey" value="#{playFairBean.key}"
+							required="true" requiredMessage="Key is Required"
+							label="plenckey" validatorMessage="Key is String Only">
+
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+
+							<p:ajax update="plenckeymessage" event="keyup" />
+						</p:inputText>
+						<p:message for="plenckey" id="plenckeymessage" display="icon" />
+
+						<p:outputLabel for="plencplain" value="Plain:" />
+						<p:inputText id="plencplain" value="#{playFairBean.plain}"
+							label="plencplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="plencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="plencplain" id="plencplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="plencpanel plencgrow"
+						actionListener="#{playFairBean.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
+
+
+
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="play_dec" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="play_dec" />
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
+
+
+			<h:form>
+				<p:growl id="pldecgrow" showDetail="true" />
+				<p:panel id="pldecpanel" header="Test PlayFair">
+
+					<p:messages id="pldecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="pldeckey" value="Key:" />
+						<p:inputText id="pldeckey" value="#{playFairBean.key}"
+							required="true" requiredMessage="Key is Required"
+							label="plenckey" validatorMessage="Key is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="pldeckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="pldeckey" id="pldeckeymessage" display="icon" />
+
+						<p:outputLabel for="pldecplain" value="Cypher:" />
+						<p:inputText id="pldecplain" value="#{playFairBean.cypher}"
+							label="pldecplain" required="true"
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="pldecplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="pldecplain" id="pldecplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="pldecpanel pldecgrow"
+						actionListener="#{playFairBean.test_dec()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
+
 		</p:dialog>
 		<!--  *************************** affine ******************** -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="affine_enc" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="affine_enc" />
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
+
+
+
+			<h:form>
+				<p:growl id="afencgrow" showDetail="true" />
+				<p:panel id="afencpanel" header="Test Affine">
+
+					<p:messages id="afencmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="afenckey" value="Key:" />
+						<p:inputText id="afenckey" value="#{affineBean.key}"
+							required="true" requiredMessage="Key is Required"
+							label="afenckey">
+
+
+
+							<p:ajax update="afenckeymessage" event="keyup" />
+						</p:inputText>
+						<p:message for="afenckey" id="afenckeymessage" display="icon" />
+
+						<p:outputLabel for="afencplain" value="Plain:" />
+						<p:inputText id="afencplain" value="#{affineBean.plain}"
+							label="afencplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="afencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="afencplain" id="afencplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="afencpanel afencgrow"
+						actionListener="#{affineBean.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
+
+
+
+
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="affine_dec" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
-			<h:outputText value="affine_dec" />
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
+
+			<h:form>
+				<p:growl id="afdecgrow" showDetail="true" />
+				<p:panel id="afdecpanel" header="Test Affine">
+
+					<p:messages id="afdecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="afdeckey" value="Key:" />
+						<p:inputText id="afdeckey" value="#{affineBean.key}"
+							required="true" requiredMessage="Key is Required"
+							label="afenckey">
+
+							<p:ajax update="afdeckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="afdeckey" id="afdeckeymessage" display="icon" />
+
+						<p:outputLabel for="afdecplain" value="Cypher:" />
+						<p:inputText id="afdecplain" value="#{affineBean.cypher}"
+							label="afdecplain" required="true"
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="afdecplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="afdecplain" id="afdecplainmessage" display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="afdecpanel afdecgrow"
+						actionListener="#{affineBean.test_dec()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
+
+
 		</p:dialog>
 		<!-- ************************combination ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="combination_enc"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
-			<h:outputText value="combinatione_enc" />
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+
+
+			<h:form>
+				<p:growl id="comencgrow" showDetail="true" />
+				<p:panel id="comencpanel" header="Test combination">
+
+					<p:messages id="comencmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<p:outputLabel for="comencplain" value="Plain:" />
+						<p:inputText id="comencplain" value="#{combinationBean.plain}"
+							label="comencplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="comencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="comencplain" id="comencplainmessage"
+							display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="comencpanel comencgrow"
+						actionListener="#{combinationBean.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
+
+
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="combination_dec"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
-			<h:outputText value="combination_dec" />
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+			<h:form>
+				<p:growl id="comdecgrow" showDetail="true" />
+				<p:panel id="comdecpanel" header="Test combination">
+
+					<p:messages id="comdecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<p:outputLabel for="comdecplain" value="Plain:" />
+						<p:inputText id="comdecplain" value="#{combinationBean.plain}"
+							label="comdecplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="comdecplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="comdecplain" id="comdecplainmessage"
+							display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="comdecpanel comdecgrow"
+						actionListener="#{combinationBean.test_dec()}"
+						icon="ui-icon-check" validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
 		</p:dialog>
 
 		<!-- ************************hillcypher ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="hillcypher_enc"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
-			<h:outputText value="hillcypher_enc" />
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="hillcypher_dec"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
 			<h:outputText value="hillcypher_dec" />
 		</p:dialog>
 		<!-- ************************Full Viginere ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="full_enc" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
 			<h:outputText value="full_enc" />
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="full_dec" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
 			<h:outputText value="full_dec" />
 		</p:dialog>
 		<!-- ************************ onetime ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="onetime_enc"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
-			<h:outputText value="onetime_enc" />
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+
+
+
+			<h:form>
+				<p:growl id="oneencgrow" showDetail="true" />
+				<p:panel id="oneencpanel" header="Test One Time pad">
+
+					<p:messages id="oneencmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="oneenckey" value="Key:" />
+						<p:inputText id="oneenckey" value="#{oneTimeBean.key}"
+							required="true" requiredMessage="Key is Required"
+							label="poenckey" validatorMessage="Key is String Only">
+
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+
+							<p:ajax update="oneenckeymessage" event="keyup" />
+						</p:inputText>
+						<p:message for="oneenckey" id="oneenckeymessage" display="icon" />
+
+						<p:outputLabel for="oneencplain" value="Plain:" />
+						<p:inputText id="oneencplain" value="#{oneTimeBean.plain}"
+							label="oneencplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="oneencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="oneencplain" id="oneencplainmessage"
+							display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="oneencpanel oneencgrow"
+						actionListener="#{oneTimeBean.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
+
+
+
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="onetime_dec"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
-			<h:outputText value="onetime_dec" />
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
+
+
+
+
+
+
+
+			<h:form>
+				<p:growl id="onedecgrow" showDetail="true" />
+				<p:panel id="onedecpanel" header="Test One Time pad">
+
+					<p:messages id="onedecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<p:outputLabel for="onedeckey" value="Key:" />
+						<p:inputText id="onedeckey" value="#{oneTimeBean.key}"
+							required="true" requiredMessage="Key is Required"
+							label="oneenckey" validatorMessage="Key is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="onedeckeymessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="onedeckey" id="onedeckeymessage" display="icon" />
+
+						<p:outputLabel for="onedecplain" value="Cypher:" />
+						<p:inputText id="onedecplain" value="#{oneTimeBean.cypher}"
+							label="onedecplain" required="true"
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="onedecplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="onedecplain" id="onedecplainmessage"
+							display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="onedecpanel onedecgrow"
+						actionListener="#{oneTimeBean.test_dec()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
+
+
 		</p:dialog>
 		<!-- ************************ Cylinder ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="cylinder_enc"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
 			<h:outputText value="cylinder_enc" />
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="cylinder_dec"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
 			<h:outputText value="cylinder_dec" />
 		</p:dialog>
 		<!-- *********************** diffhelman ************* -->
 		<!-- 		Find Key -->
 		<p:dialog header="Effects" widgetVar="diffhelman_key"
-			showEffect="explode" hideEffect="bounce" height="100" modal="true"
-			closable="true">
+			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			modal="true" closable="true">
 			<h:outputText value="diffhelman_key" />
 		</p:dialog>
 
@@ -495,23 +895,27 @@
 		<!-- ************************ Rsa ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="rsa_enc" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
 			<h:outputText value="rsa_enc" />
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="rsa_dec" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
 			<h:outputText value="rsa_dec" />
 		</p:dialog>
 		<!-- ************************ Des ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="des_enc" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
 			<h:outputText value="des_enc" />
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="des_dec" showEffect="explode"
-			hideEffect="bounce" height="100" modal="true" closable="true">
+			hideEffect="bounce" height="300px" width="550px" modal="true"
+			closable="true">
 			<h:outputText value="des_dec" />
 		</p:dialog>
 

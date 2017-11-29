@@ -6,8 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
-public class TranspositionBean {
-	public String key;
+public class CombinationBean {
 	public String plain;
 	public String cypher;
 
@@ -24,17 +23,8 @@ public class TranspositionBean {
 		this.cypher = cypher;
 	}
 
-	//
 	public String getPlain() {
 		return plain;
-	}
-
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
 	}
 
 	public void setPlain(String plain) {
