@@ -747,15 +747,129 @@
 		<!-- ************************hillcypher ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="hillcypher_enc"
-			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			showEffect="explode" hideEffect="bounce" height="400px" width="550px"
 			modal="true" closable="true">
+			<h:form>
+				<p:growl id="hillencgrow" showDetail="true" />
+				<p:panel id="hillencpanel" header="Test HillCypher 2">
+
+					<p:messages id="hillencmsgs" />
+
+					<h:outputText value="Key Matrix" />
+
+
+					<p:panelGrid columns="2" layout="grid">
+
+						<!-- index1 -->
+						<p:inputText id="hillindex00" value="#{hillcypher.index00}"
+							label="hillindex00" required="true"
+							requiredMessage="Index00 is Required">
+
+						</p:inputText>
+						<!-- index2 -->
+						<p:inputText id="hillindex01" value="#{hillcypher.index01}"
+							label="hillindex01" required="true"
+							requiredMessage="Index01 is Required">
+						</p:inputText>
+
+						<!-- index1 -->
+						<p:inputText id="hillindex10" value="#{hillcypher.index10}"
+							label="hillindex10" required="true"
+							requiredMessage="Index10 is Required">
+						</p:inputText>
+						<!-- index2 -->
+						<p:inputText id="hillindex11" value="#{hillcypher.index11}"
+							label="hillindex11" required="true"
+							requiredMessage="Index11 is Required">
+						</p:inputText>
+					</p:panelGrid>
+					<!-- 					plain -->
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<p:outputLabel for="hillencplain" value="Plain:" />
+						<p:inputText id="hillencplain" value="#{hillcypher.plain}"
+							label="hillencplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="hillencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="hillencplain" id="hillencplainmessage"
+							display="icon" />
+
+					</h:panelGrid>
+					<p:commandButton value="Test" update="hillencpanel hillencgrow"
+						actionListener="#{hillcypher.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+
+				</p:panel>
+			</h:form>
 
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="hillcypher_dec"
-			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			showEffect="explode" hideEffect="bounce" height="400px" width="550px"
 			modal="true" closable="true">
-			<h:outputText value="hillcypher_dec" />
+
+
+			<h:form>
+				<p:growl id="hilldecgrow" showDetail="true" />
+				<p:panel id="hilldecpanel" header="Test HillCypher 2">
+
+					<p:messages id="hilldecmsgs" />
+
+					<h:outputText value="Key Matrix" />
+
+
+					<p:panelGrid columns="2" layout="grid">
+
+						<!-- index1 -->
+						<p:inputText id="hillindex00" value="#{hillcypher.index00}"
+							label="hillindex00" required="true"
+							requiredMessage="Index00 is Required">
+
+						</p:inputText>
+						<!-- index2 -->
+						<p:inputText id="hillindex01" value="#{hillcypher.index01}"
+							label="hillindex01" required="true"
+							requiredMessage="Index01 is Required">
+						</p:inputText>
+
+						<!-- index1 -->
+						<p:inputText id="hillindex10" value="#{hillcypher.index10}"
+							label="hillindex10" required="true"
+							requiredMessage="Index10 is Required">
+						</p:inputText>
+						<!-- index2 -->
+						<p:inputText id="hillindex11" value="#{hillcypher.index11}"
+							label="hillindex11" required="true"
+							requiredMessage="Index11 is Required">
+						</p:inputText>
+					</p:panelGrid>
+					<!-- 					Cypher -->
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<p:outputLabel for="hilldeccypher" value="Cypher :" />
+						<p:inputText id="hilldeccypher" value="#{hillcypher.cypher}"
+							label="hilldeccypher" required="true"
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="hilldeccyphermessage" event="keyup" />
+						</p:inputText>
+						<p:message for="hilldeccypher" id="hilldeccyphermessage"
+							display="icon" />
+
+					</h:panelGrid>
+					<p:commandButton value="Test" update="hilldecpanel hilldecgrow"
+						actionListener="#{hillcypher.test_dec()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+
+				</p:panel>
+			</h:form>
+
+
+
 		</p:dialog>
 		<!-- ************************Full Viginere ************* -->
 		<!-- 		enc -->
@@ -885,9 +999,61 @@
 		<!-- *********************** diffhelman ************* -->
 		<!-- 		Find Key -->
 		<p:dialog header="Effects" widgetVar="diffhelman_key"
-			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
+			showEffect="explode" hideEffect="bounce" height="400px" width="550px"
 			modal="true" closable="true">
-			<h:outputText value="diffhelman_key" />
+
+
+			<h:form>
+				<p:growl id="diffgrow" showDetail="true" />
+				<p:panel id="diffpanel" header="DiffHelman">
+
+					<p:messages id="diffmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<!-- q -->
+						<p:outputLabel for="diffq" value="Q :" />
+						<p:inputText id="diffq" value="#{diffhelman.q}" required="true"
+							requiredMessage="Q is Required" label="diffkey">
+
+							<p:ajax update="diffqmessage" event="keyup" />
+
+						</p:inputText>
+						<p:message for="diffq" id="diffqmessage" display="icon" />
+						<!-- alpha -->
+						<p:outputLabel for="diffalpha" value="alpha :" />
+						<p:inputText id="diffalpha" value="#{diffhelman.alpha}"
+							label="diffalpha" required="true"
+							requiredMessage="alpha is Required">
+							<p:ajax update="diffalphamessage" event="keyup" />
+						</p:inputText>
+						<p:message for="diffalpha" id="diffalphamessage" display="icon" />
+						<!-- xa -->
+
+						<p:outputLabel for="diffxa" value="xa :" />
+						<p:inputText id="diffxa" value="#{diffhelman.xa}" label="diffxa"
+							required="true" requiredMessage="xa is Required">
+							<p:ajax update="diffxamessage" event="keyup" />
+						</p:inputText>
+						<p:message for="diffxa" id="diffxamessage" display="icon" />
+						<!-- xb -->
+						<p:outputLabel for="diffxb" value="xb :" />
+						<p:inputText id="diffxb" value="#{diffhelman.xb}" label="diffxa"
+							required="true" requiredMessage="xb is Required">
+							<p:ajax update="diffxbmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="diffxb" id="diffxbmessage" display="icon" />
+
+					</h:panelGrid>
+					<!-- button -->
+					<p:commandButton value="Test" update="diffpanel diffgrow"
+						actionListener="#{diffhelman.test()}" icon="ui-icon-check" />
+				</p:panel>
+			</h:form>
+
+
+
+
+
 		</p:dialog>
 
 
