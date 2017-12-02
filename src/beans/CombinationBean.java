@@ -5,6 +5,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import security.Combination;
+
 @ManagedBean
 public class CombinationBean {
 	public String plain;
@@ -32,11 +34,18 @@ public class CombinationBean {
 	}
 
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + plain));
+
+		System.out.println("Combination enc ");
+
+		this.cypher = Combination.combination_Substitution_enc(plain).toString();
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
 	}
 
 	public void test_dec() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + cypher));
+		System.out.println("Combination dec ");
+		this.plain = Combination.combination_Substitution_dec(cypher).toString();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
 	}
 
 }

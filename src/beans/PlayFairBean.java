@@ -5,6 +5,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import security.Playfair;
+
 @ManagedBean
 public class PlayFairBean {
 	public String key;
@@ -42,11 +44,18 @@ public class PlayFairBean {
 	}
 
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + plain));
+		System.out.println("play inc");
+
+		this.cypher = Playfair.play_fair_enc(plain, key).toString();
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
 	}
 
 	public void test_dec() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + cypher));
+		System.out.println("play dec");
+		this.plain = Playfair.play_fair_dec(cypher, key).toString();
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
 	}
 
 }

@@ -5,6 +5,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import security.Ceaser;
+
 @ManagedBean
 public class CeaserBean {
 
@@ -42,11 +44,17 @@ public class CeaserBean {
 	}
 
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + plain));
+
+		System.out.println("ceaser enc");
+		this.cypher = Ceaser.ceaser_enc(plain, key).toString();
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
 	}
 
 	public void test_dec() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + cypher));
+		System.out.println("ceaser dec");
+		this.plain = Ceaser.ceaser_dec(cypher, key).toString();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
 	}
 
 }

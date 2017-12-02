@@ -5,6 +5,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import security.Ploy;
+
 @ManagedBean
 public class PolyBean {
 	public String key;
@@ -42,11 +44,17 @@ public class PolyBean {
 	}
 
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + plain));
+		System.out.println("poly inc");
+
+		this.cypher = Ploy.ploy_enc(plain, key).toString();
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
 	}
 
 	public void test_dec() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + cypher));
+		System.out.println("Poly dec");
+		this.plain = Ploy.ploy_dec(cypher, key).toString();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
 	}
 
 }
