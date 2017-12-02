@@ -13,22 +13,70 @@
 		</f:facet>
 		<link rel="stylesheet" type="text/css" href="assets/css/home.css"></link>
 
+
+
+
 	</h:head>
 
 	<h:body>
 
 		<p:layout fullPage="true">
 
-			<p:layoutUnit position="north" size="100" resizable="true"
-				closable="true" collapsible="true">
+			<p:layoutUnit position="north" size="100" style="height:500px"
+				resizable="true" closable="true" collapsible="true">
 
-				<!-- Ashraf  -->
+				<!-- header  -->
 
 			</p:layoutUnit>
 
 			<p:layoutUnit position="south" size="100" closable="true"
 				collapsible="true">
-				<!--                    Ashraf -->
+				<!--                    Footer -->
+				<p:notificationBar position="top" effect="slide" styleClass="top"
+					widgetVar="bar" style="width:100%">
+					<!-- 					<h:outputText value="PrimeFaces Rocks!" style="font-size:36px;" /> -->
+
+					<!--  contact us  -->
+					<h:form id="fform">
+						<p:carousel value="#{carouselView.persons}" headerText="Students "
+							var="person" itemStyle="text-align:center" responsive="true"
+							style="width:100%">
+							<p:panelGrid columns="2" style="width:100%;margin:10px 0px"
+								columnClasses="label,value" layout="grid"
+								styleClass="ui-panelgrid-blank">
+								<f:facet name="header">
+
+									<p:graphicImage width="150px" height="100px"
+										library="images/person" name="#{person.imageName}.jpg"></p:graphicImage>
+								</f:facet>
+
+								<h:outputText value="Id:" />
+								<h:outputText value="#{person.id}" />
+
+								<h:outputText value="Name:" />
+								<h:outputText value="#{person.name}" />
+
+								<h:outputText value="Year:" />
+								<h:outputText value="#{person.year}" />
+
+								<h:outputText value="Section:" />
+								<h:outputText value="#{person.section}" />
+							</p:panelGrid>
+
+
+						</p:carousel>
+
+					</h:form>
+
+					<p:commandButton value="Hide" onclick="PF('bar').hide()"
+						type="button" icon="ui-icon-arrow-1-n" />
+
+				</p:notificationBar>
+
+
+				<p:commandButton value="About Us" onclick="PF('bar').show()"
+					type="button" icon="ui-icon-arrow-1-s" />
+
 
 			</p:layoutUnit>
 
@@ -1061,15 +1109,128 @@
 		<!-- ************************ Rsa ************* -->
 		<!-- 		enc -->
 		<p:dialog header="Effects" widgetVar="rsa_enc" showEffect="explode"
-			hideEffect="bounce" height="300px" width="550px" modal="true"
+			hideEffect="bounce" height="350px" width="550px" modal="true"
 			closable="true">
-			<h:outputText value="rsa_enc" />
+
+
+
+			<h:form>
+				<p:growl id="rsaencgrow" showDetail="true" />
+				<p:panel id="rsaencpanel" header="Test Rsa">
+
+					<p:messages id="rsaencmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<!-- 					p -->
+						<p:outputLabel for="rsaencp" value="p:" />
+						<p:inputText id="rsaencp" value="#{rsaBean.p}" required="true"
+							requiredMessage="P is Required" label="rsaencp">
+
+
+							<p:ajax update="rsaencpmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="rsaencp" id="rsaencpmessage" display="icon" />
+						<!-- q -->
+						<p:outputLabel for="rsaencq" value="q:" />
+						<p:inputText id="rsaencq" value="#{rsaBean.q}" required="true"
+							requiredMessage="q is Required" label="rsaencq">
+
+
+							<p:ajax update="rsaencqmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="rsaencq" id="rsaencqmessage" display="icon" />
+
+
+
+						<!-- plain -->
+						<p:outputLabel for="rsaencplain" value="Plain:" />
+						<p:inputText id="rsaencplain" value="#{rsaBean.plain}"
+							label="rsaencplain" required="true"
+							requiredMessage="Plain is Required"
+							validatorMessage="Plain is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="rsaencplainmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="rsaencplain" id="rsaencplainmessage"
+							display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="rsaencpanel rsaencgrow"
+						actionListener="#{rsaBean.test()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
+
+
+
+
+
 		</p:dialog>
 		<!-- 		dec -->
 		<p:dialog header="Effects" widgetVar="rsa_dec" showEffect="explode"
-			hideEffect="bounce" height="300px" width="550px" modal="true"
+			hideEffect="bounce" height="350px" width="550px" modal="true"
 			closable="true">
-			<h:outputText value="rsa_dec" />
+
+
+
+
+
+			<h:form>
+				<p:growl id="rsadecgrow" showDetail="true" />
+				<p:panel id="rsadecpanel" header="Test Rsa">
+
+					<p:messages id="rsadecmsgs" />
+
+					<h:panelGrid columns="3" cellpadding="5">
+						<!-- 					p -->
+						<p:outputLabel for="rsadecp" value="p:" />
+						<p:inputText id="rsadecp" value="#{rsaBean.p}" required="true"
+							requiredMessage="P is Required" label="rsadecp">
+
+
+							<p:ajax update="rsadecpmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="rsadecp" id="rsadecpmessage" display="icon" />
+						<!-- q -->
+						<p:outputLabel for="rsadecq" value="q:" />
+						<p:inputText id="rsadecq" value="#{rsaBean.q}" required="true"
+							requiredMessage="q is Required" label="rsadecq">
+
+
+							<p:ajax update="rsadecqmessage" event="keyup" />
+						</p:inputText>
+						<p:message for="rsadecq" id="rsadecqmessage" display="icon" />
+
+
+
+						<!-- Cypher -->
+						<p:outputLabel for="rsadeccypher" value="Cypher:" />
+						<p:inputText id="rsadeccypher" value="#{rsaBean.cypher}"
+							label="rsadeccypher" required="true"
+							requiredMessage="Cypher is Required"
+							validatorMessage="Cypher is String Only">
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
+							<p:ajax update="rsadeccyphermessage" event="keyup" />
+						</p:inputText>
+						<p:message for="rsadeccypher" id="rsadeccyphermessage"
+							display="icon" />
+
+					</h:panelGrid>
+
+					<p:commandButton value="Test" update="rsadecpanel rsadecgrow"
+						actionListener="#{rsaBean.test_dec()}" icon="ui-icon-check"
+						validateClient="true"></p:commandButton>
+				</p:panel>
+			</h:form>
+
+
+
+
+
+
+
+
 		</p:dialog>
 		<!-- ************************ Des ************* -->
 		<!-- 		enc -->
@@ -1143,14 +1304,8 @@
 	</h:body>
 
 </f:view>
-<script type="text/javascript">
-function start() {
-    PF('statusDialog').show();
-}
- 
-function stop() {
-    PF('statusDialog').hide();
-}
-</script>
+
+
+
 </html>
 
