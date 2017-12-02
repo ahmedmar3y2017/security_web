@@ -194,35 +194,8 @@
 									onclick="PF('hillcypher_dec').show();" />
 
 							</p:panel>
-							<!--  Full Viginere  -->
-							<p:panel id="full" header="Full Viginere" toggleable="true"
-								closable="true">
 
 
-								<p:commandButton value="enc" type="button"
-									onclick="PF('full_enc').show();" />
-								<p:commandButton value="dec" type="button"
-									onclick="PF('full_dec').show();" />
-
-							</p:panel>
-							<!--  one Time pad  -->
-							<p:panel id="onetime" header="One Time Pad" toggleable="true"
-								closable="true">
-								<p:commandButton value="enc" type="button"
-									onclick="PF('onetime_enc').show();" />
-								<p:commandButton value="dec" type="button"
-									onclick="PF('onetime_dec').show();" />
-
-							</p:panel>
-							<!--  Cylinder  -->
-							<p:panel id="cylinder" header="Cylinder" toggleable="true"
-								closable="true">
-								<p:commandButton value="enc" type="button"
-									onclick="PF('cylinder_enc').show();" />
-								<p:commandButton value="dec" type="button"
-									onclick="PF('cylinder_dec').show();" />
-
-							</p:panel>
 							<!-- diffhelman -->
 							<p:panel id="diffhelman" header="Diffhelman" toggleable="true"
 								closable="true">
@@ -717,9 +690,8 @@
 
 					<h:panelGrid columns="3" cellpadding="5">
 						<p:outputLabel for="afdeckey" value="Key:" />
-						<p:inputText id="afdeckey" value="#{affineBean.k}"
-							required="true" requiredMessage="Key is Required"
-							label="afenckey">
+						<p:inputText id="afdeckey" value="#{affineBean.k}" required="true"
+							requiredMessage="Key is Required" label="afenckey">
 
 							<p:ajax update="afdeckeymessage" event="keyup" />
 
@@ -728,7 +700,7 @@
 
 
 
-			<p:outputLabel for="afdecm" value="M:" />
+						<p:outputLabel for="afdecm" value="M:" />
 						<p:inputText id="afdecm" value="#{affineBean.m}" required="true"
 							requiredMessage="M is Required" label="afdecm">
 
@@ -971,131 +943,9 @@
 
 
 		</p:dialog>
-		<!-- ************************Full Viginere ************* -->
-		<!-- 		enc -->
-		<p:dialog header="Effects" widgetVar="full_enc" showEffect="explode"
-			hideEffect="bounce" height="300px" width="550px" modal="true"
-			closable="true">
-			<h:outputText value="full_enc" />
-		</p:dialog>
-		<!-- 		dec -->
-		<p:dialog header="Effects" widgetVar="full_dec" showEffect="explode"
-			hideEffect="bounce" height="300px" width="550px" modal="true"
-			closable="true">
-			<h:outputText value="full_dec" />
-		</p:dialog>
-		<!-- ************************ onetime ************* -->
-		<!-- 		enc -->
-		<p:dialog header="Effects" widgetVar="onetime_enc"
-			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
-			modal="true" closable="true">
 
 
 
-			<h:form>
-				<p:growl id="oneencgrow" showDetail="true" />
-				<p:panel id="oneencpanel" header="Test One Time pad">
-
-					<p:messages id="oneencmsgs" />
-
-					<h:panelGrid columns="3" cellpadding="5">
-						<p:outputLabel for="oneenckey" value="Key:" />
-						<p:inputText id="oneenckey" value="#{oneTimeBean.key}"
-							required="true" requiredMessage="Key is Required"
-							label="poenckey" validatorMessage="Key is String Only">
-
-							<f:validateRegex pattern="^[a-zA-Z]+$" />
-
-							<p:ajax update="oneenckeymessage" event="keyup" />
-						</p:inputText>
-						<p:message for="oneenckey" id="oneenckeymessage" display="icon" />
-
-						<p:outputLabel for="oneencplain" value="Plain:" />
-						<p:inputText id="oneencplain" value="#{oneTimeBean.plain}"
-							label="oneencplain" required="true"
-							requiredMessage="Plain is Required"
-							validatorMessage="Plain is String Only">
-							<f:validateRegex pattern="^[a-zA-Z]+$" />
-							<p:ajax update="oneencplainmessage" event="keyup" />
-						</p:inputText>
-						<p:message for="oneencplain" id="oneencplainmessage"
-							display="icon" />
-
-					</h:panelGrid>
-
-					<p:commandButton value="Test" update="oneencpanel oneencgrow"
-						actionListener="#{oneTimeBean.test()}" icon="ui-icon-check"
-						validateClient="true"></p:commandButton>
-				</p:panel>
-			</h:form>
-
-
-
-
-		</p:dialog>
-		<!-- 		dec -->
-		<p:dialog header="Effects" widgetVar="onetime_dec"
-			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
-			modal="true" closable="true">
-
-
-
-
-
-
-
-			<h:form>
-				<p:growl id="onedecgrow" showDetail="true" />
-				<p:panel id="onedecpanel" header="Test One Time pad">
-
-					<p:messages id="onedecmsgs" />
-
-					<h:panelGrid columns="3" cellpadding="5">
-						<p:outputLabel for="onedeckey" value="Key:" />
-						<p:inputText id="onedeckey" value="#{oneTimeBean.key}"
-							required="true" requiredMessage="Key is Required"
-							label="oneenckey" validatorMessage="Key is String Only">
-							<f:validateRegex pattern="^[a-zA-Z]+$" />
-							<p:ajax update="onedeckeymessage" event="keyup" />
-
-						</p:inputText>
-						<p:message for="onedeckey" id="onedeckeymessage" display="icon" />
-
-						<p:outputLabel for="onedecplain" value="Cypher:" />
-						<p:inputText id="onedecplain" value="#{oneTimeBean.cypher}"
-							label="onedecplain" required="true"
-							requiredMessage="Cypher is Required"
-							validatorMessage="Cypher is String Only">
-							<f:validateRegex pattern="^[a-zA-Z]+$" />
-							<p:ajax update="onedecplainmessage" event="keyup" />
-						</p:inputText>
-						<p:message for="onedecplain" id="onedecplainmessage"
-							display="icon" />
-
-					</h:panelGrid>
-
-					<p:commandButton value="Test" update="onedecpanel onedecgrow"
-						actionListener="#{oneTimeBean.test_dec()}" icon="ui-icon-check" />
-				</p:panel>
-			</h:form>
-
-
-
-
-		</p:dialog>
-		<!-- ************************ Cylinder ************* -->
-		<!-- 		enc -->
-		<p:dialog header="Effects" widgetVar="cylinder_enc"
-			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
-			modal="true" closable="true">
-			<h:outputText value="cylinder_enc" />
-		</p:dialog>
-		<!-- 		dec -->
-		<p:dialog header="Effects" widgetVar="cylinder_dec"
-			showEffect="explode" hideEffect="bounce" height="300px" width="550px"
-			modal="true" closable="true">
-			<h:outputText value="cylinder_dec" />
-		</p:dialog>
 		<!-- *********************** diffhelman ************* -->
 		<!-- 		Find Key -->
 		<p:dialog header="Effects" widgetVar="diffhelman_key"

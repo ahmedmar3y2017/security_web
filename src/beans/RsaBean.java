@@ -5,6 +5,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import security.Rsa;
+
 @ManagedBean
 public class RsaBean {
 
@@ -51,10 +53,14 @@ public class RsaBean {
 	}
 
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Test Inc Rsa "));
+		System.out.println("rsa enc");
+		this.cypher = Rsa.Rsa_enc(plain, p, q).toString();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
 	}
 
 	public void test_dec() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Test Dec Rsa"));
+		System.out.println("rsa dec");
+		this.plain = Rsa.Rsa_dec(cypher, p, q).toString();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
 	}
 }

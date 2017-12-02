@@ -66,10 +66,17 @@ public class Hillcypher {
 	}
 
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Test Inc "));
+		System.out.println("HillCypher enc");
+
+		this.cypher = security.Hillcypher.hillcypher_enc(index00, index01, index10, index11, plain).toString();
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
 	}
 
 	public void test_dec() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Test Dec"));
+		System.out.println("HillCypher dec");
+		this.plain = security.Hillcypher.hillcypher_edec(index00, index01, index10, index11, cypher).toString();
+
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
 	}
 }

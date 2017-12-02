@@ -52,7 +52,18 @@ public class Diffhelman {
 
 	// test
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("test is "));
+
+		System.out.println("Find Key");
+
+		int find = security.Diffhelman.find_key(q, alpha, xa, xb);
+
+		if (find == 0) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error Key sender not eqal key reciever", null));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Key is : " + find));
+		}
+
 	}
 
 }

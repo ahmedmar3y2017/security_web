@@ -87,7 +87,7 @@ public class Affine {
 		return gcd(b, a % b);
 	}
 
-	// calc inverse
+	// calc multi inverse
 	public static int[] findInverse(int a, int b) {
 		int x = 0, y = 1, lastx = 1, lasty = 0;
 		while (b != 0) {

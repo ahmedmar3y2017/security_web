@@ -7,7 +7,7 @@ public class Hillcypher {
 	public static String letter_space = " abcdefghijklmnopqrstuvwxyz";
 
 	// enc
-	public static StringBuilder hillcypher_enc(String plain) {
+	public static StringBuilder hillcypher_enc(int index00, int index01, int index10, int index11, String plain) {
 		// delete all white spaces
 		String plain_ = plain.replaceAll("\\s", "");
 		// number of letters
@@ -17,11 +17,11 @@ public class Hillcypher {
 
 		// init matrix 2*2 as akey
 		int[][] key = new int[2][2];
-		key[0][0] = 9;
-		key[0][1] = 4;
+		key[0][0] = index00;
+		key[0][1] = index01;
 
-		key[1][0] = 5;
-		key[1][1] = 7;
+		key[1][0] = index10;
+		key[1][1] = index11;
 		// mul main row
 		int mul1 = 1;
 		// mul second row
@@ -158,7 +158,7 @@ public class Hillcypher {
 	}
 
 	// dec
-	public static StringBuilder hillcypher_edec(String cypher) {
+	public static StringBuilder hillcypher_edec(int index00, int index01, int index10, int index11, String cypher) {
 		// delete all white spaces
 		String cypher_ = cypher.replaceAll("\\s", "");
 		// number of letters
@@ -167,11 +167,11 @@ public class Hillcypher {
 		StringBuilder plain = new StringBuilder();
 		// init matrix 2*2 as akey
 		int[][] key = new int[2][2];
-		key[0][0] = 9;
-		key[0][1] = 4;
+		key[0][0] = index00;
+		key[0][1] = index01;
 
-		key[1][0] = 5;
-		key[1][1] = 7;
+		key[1][0] = index10;
+		key[1][1] = index11;
 		// mul main row
 		int mul1 = 1;
 		// mul second row
