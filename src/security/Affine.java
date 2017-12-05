@@ -92,7 +92,6 @@ public class Affine {
 		int x = 0, y = 1, lastx = 1, lasty = 0;
 		while (b != 0) {
 			int quotient = a / b;
-
 			int temp = a;
 			a = b;
 			b = temp % b;
