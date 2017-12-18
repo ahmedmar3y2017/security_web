@@ -13,8 +13,8 @@ public class ImagesView {
 	@PostConstruct
 	public void init() {
 		images = new ArrayList<String>();
-		for (int i = 1; i <= 3; i++) {
-			images.add("a" + i + ".png");
+		for (int i = 1; i <= 20; i++) {
+			images.add("a" + i + ".JPG");
 		}
 
 		System.out.println(images);

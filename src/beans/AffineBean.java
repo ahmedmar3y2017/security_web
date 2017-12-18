@@ -66,15 +66,43 @@ public class AffineBean {
 		System.out.println("Affine enc");
 
 		this.cypher = Affine.affine_enc(m, plain, k, n).toString();
+		// Gcd != 1
+		if (cypher.equals("1")) {
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Gcd != 1");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+
+		}
+		// m not less than n
+		else if (cypher.equals("2")) {
+
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "m not less than n ");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
+
+		}
+
 	}
 
 	public void test_dec() {
 		System.out.println("Affine dec");
 		this.plain = Affine.affine_dec(m, cypher, k, n).toString();
+		// Gcd != 1
+		if (plain.equals("1")) {
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Gcd != 1");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+
+		}
+		// m not less than n
+		else if (plain.equals("2")) {
+
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "m not less than n ");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
+		}
 	}
 
 }

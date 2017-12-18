@@ -5,6 +5,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import security.Transposition;
+
 @ManagedBean
 public class TranspositionBean {
 	public String key;
@@ -42,11 +44,32 @@ public class TranspositionBean {
 	}
 
 	public void test() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + plain));
+
+		cypher = Transposition.transposition_enc(plain, key).toString();
+		if (cypher.equals("") || cypher == null) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
+					"Key Not Contain Duplication char");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
+
+		}
+
 	}
 
 	public void test_dec() {
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + cypher));
+
+		this.plain = Transposition.decrypt(cypher, key);
+
+		if (this.plain.equals("1")) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
+					"the number of the cypher length must be divisable of the length of key");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + this.plain));
+
+		}
+
 	}
 
 }

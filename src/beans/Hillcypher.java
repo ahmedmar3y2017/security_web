@@ -69,14 +69,29 @@ public class Hillcypher {
 		System.out.println("HillCypher enc");
 
 		this.cypher = security.Hillcypher.hillcypher_enc(index00, index01, index10, index11, plain).toString();
+		if (cypher.equals("")) {
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Gcd (key , n ) != 1");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
+
+		}
+
 	}
 
 	public void test_dec() {
 		System.out.println("HillCypher dec");
 		this.plain = security.Hillcypher.hillcypher_edec(index00, index01, index10, index11, cypher).toString();
+		if (plain.equals("")) {
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Gcd (key , n ) != 1");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
+
+		}
 	}
 }

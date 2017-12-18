@@ -48,14 +48,26 @@ public class PlayFairBean {
 
 		this.cypher = Playfair.play_fair_enc(plain, key).toString();
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
+		if (this.cypher.equals("1")) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Error Key Repeating");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cypher is : " + cypher));
+
+		}
+
 	}
 
 	public void test_dec() {
 		System.out.println("play dec");
 		this.plain = Playfair.play_fair_dec(cypher, key).toString();
+		if (this.plain.equals("1")) {
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Error Key Repeating");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("plain is : " + plain));
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Plain is : " + plain));
+		}
 	}
 
 }
